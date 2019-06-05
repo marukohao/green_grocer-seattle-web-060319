@@ -36,8 +36,10 @@ def apply_coupons(cart, coupons)
       detail[:count] = count 
       name = "#{item} W/COUPON"
       detail[:count] = count
-      cart[name] = {:price => count_coupon * coupons[:cost], :clearance => true, :count => count_coupon}
     end
+  end
+  if count_coupon >= 1
+    cart[name] = {:price => count_coupon * coupons[:cost], :clearance => true, :count => count_coupon}
   end
   cart
   # code here
