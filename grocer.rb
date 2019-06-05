@@ -35,12 +35,10 @@ def apply_coupons(cart, coupons)
       count = detail[:count] % coupons[:num]
       detail[:count] = count 
       name = "#{item} W/COUPON"
+      detail[:count] = count
+      cart[item] = {"#{item} W/COUPON" => {:price => count_coupon * coupons[:cost], :clearance => true, :count => count_coupon}} 
     end
   end
-  cart[name] = {}
-  cart[name][:price] = coupons[:cost] * count_coupon
-  cart[name][:clearance] = true 
-  cart[name][:count] = count_coupon
   cart
   # code here
 end
